@@ -1,2 +1,2 @@
-# Time-Series-Forecasting
-This repo contains a personal project in Python.
+# Time_Series_Forecasting
+Personal project
