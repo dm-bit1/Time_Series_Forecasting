@@ -1,27 +1,41 @@
-Time_Series_Forecasting 
-Introduction 
-I added this to the README file because I wanted a reason to write 
-something in Nano in Git Bash. This project was motivated by my interest in the stock market. There is a large 
-community of day traders and software is required to enable these traders to trade. This is a helpful activity 
-in the context of the economy because it provides liquidity to the markets. I became aware of the Mplfinance 
-library which is designed for finacial instruments. It is more targeted than Matplotlib itself to that end. I 
-wanted to see how the charts that can be generated using the library compare to websites frequently used by 
-traders to view stock charts. E.g. bigcharts.com, yahoofinance.com. Another thing I wanted to implement is 
-machine learning because of the powerful forecasting it can generate. The accuracy of a model can be measured 
-with a testing dataset. I wanted to gain some experience in applied machine learning using PyTorch which is not 
-an easy task. I researched some simple and effective methods of applied machine learning and decided I wanted 
-to use an LSTM in PyTorch. Why use an LSTM? Because, it uses a recurrent neural network under the hood. That 
-means the network feeds data back into itself in order to learn the patterns in the dataset over each epoch. In 
-theory, it should perform superiorly for a regression task such as time series forecasting.The normalization 
-step in the machine learning was skipped because it was a simple example. In reality, the normalization step 
-could be important because it can remove patterns from the data which can reduce overfitting. This project was 
-not an exercise in data science because there is no hypothesis to test against. It was an exercise in 
-programming and applied machine learning to gain some practice and familiarity. 
-Conclusion 
-The Mplfinance library turns out some pretty high quality candlestick plots with customizability. It compares pretty favorable 
-to Bigcharts and Yahoo Finance. As it relates to machine learning, it is a difficult discipline to master 
-because of the complexity of machine learning algorithms. Even with the PyTorch library that has high-level 
-models, it still requires an understanding of how to train the models, test the models, use appropriate 
+Time_Series_Forecasting
+
+Background and Overview
+This project was motivated by my interest in the stock market and data science. The Mplfinance 
+library was used a lot in this project to create custom visualizations of historical stock prices 
+because it is designed for finacial assets. It provides better visuals for stock prices than Matplotlib. 
+It generates stock charts similar to those used by popular websites, e.g. bigcharts.com, yahoofinance.com. 
+Another thing I implemented is machine learning, because
+of the it's powerful ability to predict. The accuracy of each model was tested.
+I researched some simple and effective methods of applied machine learning and decided I wanted to use an LSTM in PyTorch.
+The Mplfinance library turns out some pretty high quality candlestick plots with customizability. 
+As it relates to machine learning, the PyTorch library that has high-level 
+models and it requires an understanding of how to train the models, test the models, use appropriate 
 weights, use the right time steps in testing and training, normalization, optimizers, plotting the loss 
 function, etc.
+
+Machine Learning Methodology
+The predictions used a custom LSTM in PyTorch in Python. The code used 2000 epochs and the model got 
+more accurate as the number of epochs increased when tested. The train and test split used was 80% and 20%,
+respectively. This means that 2023 included 250 trading days and 200 days were used to train the model
+and 50 days were used to test the model. Note, the model was trained with opening stock price data and it was tasked
+with predicting the closing prices. This test and actual values can be seen in a plot called NFLX stock in 2023
+with blue and green lines. There is also a plot called Loss using RMSE that shows the loss after each 100
+epochs which shows decline that resembles an exponential decay. This implies that the model trained 
+a lot better with more epochs. There may be a diminishing return at some point as it relates to the number of epochs used.
+
+Data Structure Overview
+The historical stock data was obtained using the Yahoo Fiance API.
+The data represents trading days with start = "2023-01-01", end = "2023-12-31". Then, it was wrangled using Pandas Dataframes. 
+This was necessary preparation to training the machine learning models ultimately using a custom PyTorch LSTM I created and I used some source code to guide me through the machine
+learning process. The column names are visible in a cell in the Jupyter Notebook.
+There are plots which show several different time views to display different data granularity.
+E.g. 1 year period with 1 day intervals, 5 day period with 1 minute intervals, 1 day period with 1 minute intervals, 
+
+Executive Summary
+The regression model was able to generate somewhat accurate stock price predictions. It slightly lagged behind on days
+where there was a large fluctuation in price as is seen on in a plot. The model actually predicted lower
+prices for most of the days which could indicate it was a bull market.
+
+Recommendations
 
